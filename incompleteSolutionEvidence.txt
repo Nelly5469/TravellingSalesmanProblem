@@ -1,0 +1,31 @@
+SALIDA DEL PROGRAMA:
+Ciudad: NY -> CHI TOR DEN
+Ciudad: CHI -> DEN
+Ciudad: DEN -> HOU LA
+Ciudad: HOU -> URB LA
+Ciudad: URB ->
+Ciudad: LA ->
+Ciudad: TOR -> LA CALG
+Ciudad: CALG -> LA
+
+
+Trayectorias de soluciones
+LA DEN
+LA HOU DEN
+LA CALG TOR
+LA CALG TOR
+LA DEN CHI
+LA HOU DEN CHI
+
+Process returned 0 (0x0)   execution time : 0.278 s
+Press any key to continue.
+
+
+SALIDA ESPERADA DE LAS TRAYECTORIAS:
+Trayectorias de soluciones
+LA DEN
+LA HOU DEN
+LA CALG TOR
+LA TOR
+LA DEN CHI
+LA HOU DEN CHI
