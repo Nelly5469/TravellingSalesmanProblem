@@ -87,16 +87,18 @@ int main()
     }
 
     // Establece conexiones entre las ciudades (aristas)
-    graph.addEdge("NY", "CHI");
+    //graph.addEdge("NY", "CHI"); // **
     graph.addEdge("NY", "TOR");
-    graph.addEdge("NY", "DEN");
+    graph.addEdge("NY", "DEN");   // ** Si le paso primero el camino mas corto, lo hace mal
+    graph.addEdge("NY", "CHI");
     graph.addEdge("CHI", "DEN");
-    graph.addEdge("TOR", "LA");
+    //graph.addEdge("TOR", "LA"); // *
     graph.addEdge("DEN", "HOU");
     graph.addEdge("DEN", "LA");
     graph.addEdge("HOU", "URB");
     graph.addEdge("HOU", "LA");
-    graph.addEdge("TOR", "CALG");
+    graph.addEdge("TOR", "CALG"); // * Si le paso primero el camino mas largo, lo hace bien
+    graph.addEdge("TOR", "LA");
     graph.addEdge("CALG", "LA");
 
     // Muestra el grafo
@@ -150,6 +152,7 @@ int main()
                 auxNode = auxNode2;
             }
             solutions.push_back(currentSolution);
+            //sol: cada que  se encuentre una solucion quitar todos los nodos padres
             currentSolution.clear();
         }
     }

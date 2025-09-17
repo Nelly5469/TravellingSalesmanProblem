@@ -20,7 +20,7 @@ LA HOU DEN CHI
 Process returned 0 (0x0)   execution time : 0.278 s
 Press any key to continue.
 
-
+***************************************************************************************************
 SALIDA ESPERADA DE LAS TRAYECTORIAS:
 Trayectorias de soluciones
 LA DEN
@@ -29,3 +29,29 @@ LA CALG TOR
 LA TOR
 LA DEN CHI
 LA HOU DEN CHI
+
+***************************************************************************************************
+REPLICACION DEL ERROR EN OTRAS CIUDADES Y CORRECCION EN LA DEL PROBLEMA PASADO
+Trayectorias de soluciones
+LA DEN CHI
+LA HOU DEN CHI
+LA DEN CHI
+LA HOU DEN CHI
+LA TOR
+LA CALG TOR
+
+CODIGO MODIFICADO:
+    // Establece conexiones entre las ciudades (aristas)
+    //graph.addEdge("NY", "CHI"); // ** 
+    graph.addEdge("NY", "TOR");
+    graph.addEdge("NY", "DEN");   // **
+    graph.addEdge("NY", "CHI");
+    graph.addEdge("CHI", "DEN");
+    //graph.addEdge("TOR", "LA"); // *
+    graph.addEdge("DEN", "HOU");
+    graph.addEdge("DEN", "LA");
+    graph.addEdge("HOU", "URB");
+    graph.addEdge("HOU", "LA");
+    graph.addEdge("TOR", "CALG"); // * Si le paso primero el camino mas largo, lo hace bien
+    graph.addEdge("TOR", "LA");
+    graph.addEdge("CALG", "LA");
