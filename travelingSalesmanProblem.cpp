@@ -3,6 +3,7 @@
 #include <stack>
 #include <vector>
 #include <string>
+#include <algorithm>
 
 using namespace std;
 
@@ -11,7 +12,7 @@ class Node
 public:
     string name;                  // Nombre de la ciudad
     vector<Node *> childrenNodes; // Ciudades donde hay viajes directos desde la ciudad actual
-    Node *parentNode;
+    Node *parentNode; //CAMBIAR POR PILA DE PADRES?
 
     Node(string cityName) : name(cityName) {} // Constructor para inicializar el nombre de la ciudad
 };
@@ -71,6 +72,21 @@ public:
     }
 };
 
+void findPaths(Node* current, Node* final, vector<Node*>& path, vector<vector<Node*>>& solutions) {
+    path.push_back(current);
+    if (current == final) {
+        solutions.push_back(path);
+    } else {
+        for (Node* child : current->childrenNodes) {
+            // Evita ciclos
+            if (find(path.begin(), path.end(), child) == path.end()) {
+                findPaths(child, final, path, solutions);
+            }
+        }
+    }
+    path.pop_back();
+}
+
 int main()
 {
     Graph graph;
@@ -121,7 +137,7 @@ int main()
     Node *auxNode, *auxNode2;
     unsigned int i;
     vector<Node *> currentSolution;
-
+/*
     // 3. Lista abierta vacia?
     while (!openList.empty())
     {
@@ -156,6 +172,9 @@ int main()
             currentSolution.clear();
         }
     }
+    */
+    vector<Node*> path;
+    findPaths(INIT_STATE, FINAL_STATE, path, solutions);
 
     // mostrar soluciones
     cout << endl
